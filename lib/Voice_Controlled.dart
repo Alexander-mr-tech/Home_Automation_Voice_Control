@@ -1,7 +1,8 @@
 import 'package:avatar_glow/avatar_glow.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:home_automation_using_voice_commands/background_image.dart';
 import 'package:speech_to_text/speech_to_text.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class VoiceControl extends StatefulWidget {
   const VoiceControl({Key? key}) : super(key: key);
@@ -11,21 +12,49 @@ class VoiceControl extends StatefulWidget {
 }
 
 class _VoiceControlState extends State<VoiceControl> {
-
   SpeechToText speechToText = SpeechToText();
-  var text = "Press Button Speech To Text";
-
+  String text = "";
   var isListening = false;
-  int _selectedIndex = 0;
-  void _onItemTapped(int index) {
+  bool Fan = false;
+  bool Light = false;
+  bool Pump = false;
+
+  final dbRef = FirebaseDatabase.instance.ref();
+
+
+  Future onUpdate_1() async{
     setState(() {
-      _selectedIndex = index;
+      Fan = !Fan;
     });
   }
+  Future onWrite_1() async {
+    dbRef.child("Appliances").set({"Fan": !Fan});
+  }
+
+  Future onUpdate_2() async{
+    setState(() {
+      Light = !Light;
+    });
+  }
+  Future<void> onWrite_2() async {
+    dbRef.child("Appliances").set({"Light": !Light});
+  }
+
+  Future onUpdate_3() async{
+    setState(() {
+      Pump = !Pump;
+    });
+  }
+  Future<void> onWrite_3() async {
+    dbRef.child("Appliances").set({"Pump": !Pump});
+  }
+
   @override
   Widget build(BuildContext context) {
-    return bgWidget(
-      child: Scaffold(
+    return Scaffold(
+        resizeToAvoidBottomInset: false,
+        extendBodyBehindAppBar: true,
+        backgroundColor: Colors.transparent,
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: AvatarGlow(
           endRadius: 75.0,
@@ -37,23 +66,69 @@ class _VoiceControlState extends State<VoiceControl> {
           glowColor: Colors.white,
           child: GestureDetector(
             onTapDown: (details) async {
-              if(!isListening){
+              if (!isListening) {
                 var available = await speechToText.initialize();
-                if(available){
+                if (available) {
                   setState(() {
                     isListening = true;
-                    speechToText.listen(
-                      onResult: (result){
-                        setState(() {
-                          text = result.recognizedWords;
-                        });
-                      }
-                    );
+                    speechToText.listen(onResult: (result) {
+                      setState(() {
+                        text = result.recognizedWords;
+                        if (text == 'turn on fan') {
+                          if (kDebugMode) {
+                            print(text);
+                            onUpdate_1();
+                            onWrite_1();
+                          }
+                          isListening = false;
+                        }
+                        if (text == 'turn off fan') {
+                          if (kDebugMode) {
+                            print(text);
+                            onUpdate_1();
+                            onWrite_1();
+                          }
+                          isListening = false;
+                        }
+                        if (text == 'turn on light') {
+                          if (kDebugMode) {
+                            print(text);
+                            onUpdate_2();
+                            onWrite_2();
+                          }
+                          isListening = false;
+                        }
+                        if (text == 'turn off light') {
+                          if (kDebugMode) {
+                            print(text);
+                            onUpdate_2();
+                            onWrite_2();
+                          }
+                          isListening = false;
+                        }
+                        if (text == 'turn on pump') {
+                          if (kDebugMode) {
+                            print(text);
+                            onUpdate_3();
+                            onWrite_3();
+                          }
+                          isListening = false;
+                        }
+                        if (text == 'turn off pump') {
+                          if (kDebugMode) {
+                            print(text);
+                            onUpdate_3();
+                            onWrite_3();
+                          }
+                          isListening = false;
+                        }
+                      });
+                    });
                   });
                 }
               }
             },
-            onTapUp: (details){
+            onTapUp: (details) {
               setState(() {
                 isListening = false;
               });
@@ -62,74 +137,55 @@ class _VoiceControlState extends State<VoiceControl> {
             child: CircleAvatar(
               backgroundColor: Colors.cyan,
               radius: 45,
-              child: Icon(isListening ? Icons.mic : Icons.mic_none,size:50,color: Colors.white,),
+              child: Icon(
+                isListening ? Icons.mic : Icons.mic_none,
+                size: 50,
+                color: Colors.white,
+              ),
             ),
           ),
-        ) ,
-
-        resizeToAvoidBottomInset: false,
-        extendBodyBehindAppBar: true,
-        backgroundColor: Colors.transparent,
-        appBar: AppBar(
-          title: const Text("Voice Controller"),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.logout),
-              onPressed: () {
-                // Handle logout button press
-              },
-            ),
-          ],
-          centerTitle: true,
-          backgroundColor: Colors.transparent,
-          elevation: 0,
         ),
         body: SingleChildScrollView(
           reverse: true,
           physics: const BouncingScrollPhysics(),
-          child: Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height * 0.7,
-            alignment: Alignment.center,
-            padding: const EdgeInsets.symmetric(horizontal: 24,vertical: 16),
-            margin: const EdgeInsets.only(bottom: 150),
-            child: Text(text,style: TextStyle(fontSize: 30,
-            color: isListening ? Colors.white : Colors.white ,fontWeight: FontWeight.w600),),
+          child: Column(
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * 0.40,
+                alignment: Alignment.center,
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                margin: const EdgeInsets.only(bottom: 150),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SingleChildScrollView(
+                      child: Text(
+                        text,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 30,
+                            color: isListening ? Colors.redAccent : Colors.white,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * 0.1,
+                child: Text("Controlling Your Devices with Your Voice",textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: 30,
+                      color: isListening ? Colors.purple : Colors.blueAccent,
+                      fontWeight: FontWeight.bold),),
+              ),
+            ],
+
           ),
+
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          selectedLabelStyle: const TextStyle(fontSize: 16,fontWeight: FontWeight.bold,),
-          unselectedLabelStyle: const TextStyle(fontSize: 14),
-          selectedItemColor: Colors.blue,
-          unselectedItemColor: Colors.grey,
-          backgroundColor: Colors.transparent,
-          currentIndex: _selectedIndex,
-          onTap: _onItemTapped,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home,
-                size: 25,
-              ),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.mic,
-                size: 25,
-              ),
-              label: 'Voice Controlled',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.person,
-                size: 25,
-              ),
-              label: 'Profile',
-            ),
-          ],
-        ),
-      )
-    );
+      );
   }
 }

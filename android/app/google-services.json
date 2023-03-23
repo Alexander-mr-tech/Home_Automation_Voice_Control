@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "381550419053",
+    "firebase_url": "https://home-automation-937e4-default-rtdb.firebaseio.com",
+    "project_id": "home-automation-937e4",
+    "storage_bucket": "home-automation-937e4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:381550419053:android:b8cce60a7549eca1e33364",
+        "android_client_info": {
+          "package_name": "com.example.home_automation_using_voice_commands"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "381550419053-s2vah047noh32rviecgdgf41minrt9o1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCscIYW5T4xkzlutCDa3-lphJX5Q8gwWk8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "381550419053-s2vah047noh32rviecgdgf41minrt9o1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

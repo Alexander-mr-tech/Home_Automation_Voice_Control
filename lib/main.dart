@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
-// import 'package:home_automation_using_voice_commands/Home_Screen.dart';
-import 'package:home_automation_using_voice_commands/Voice_Controlled.dart';
+import 'package:home_automation_using_voice_commands/SignIn_Screen.dart';
+import 'package:torch_controller/torch_controller.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+
+void main() async{
+  TorchController().initialize();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -15,8 +19,8 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: VoiceControl(),
-      // HomeScreen(),
+      home:
+      SignInScreen(),
     );
   }
 }
