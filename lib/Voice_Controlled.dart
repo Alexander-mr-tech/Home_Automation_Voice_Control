@@ -61,8 +61,8 @@ class _VoiceControlState extends State<VoiceControl> {
             },
             child: CircleAvatar(
               backgroundColor: Colors.cyan,
-              radius: 35,
-              child: Icon(isListening ? Icons.mic : Icons.mic_none,color: Colors.white,),
+              radius: 45,
+              child: Icon(isListening ? Icons.mic : Icons.mic_none,size:50,color: Colors.white,),
             ),
           ),
         ) ,
@@ -94,7 +94,7 @@ class _VoiceControlState extends State<VoiceControl> {
             padding: const EdgeInsets.symmetric(horizontal: 24,vertical: 16),
             margin: const EdgeInsets.only(bottom: 150),
             child: Text(text,style: TextStyle(fontSize: 30,
-            color: isListening ? Colors.black87 : Colors.black54 ,fontWeight: FontWeight.w600),),
+            color: isListening ? Colors.white : Colors.white ,fontWeight: FontWeight.w600),),
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
