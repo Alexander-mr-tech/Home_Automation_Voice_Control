@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:home_automation_using_voice_commands/Voice_Controlled.dart';
 import 'package:home_automation_using_voice_commands/background_image.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -12,13 +13,6 @@ class _HomeScreenState extends State<HomeScreen> {
   bool button1 = false;
   bool button2 = false;
   bool button3 = false;
-
-  int _selectedIndex = 0;
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -235,38 +229,6 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ],
           ),
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          selectedLabelStyle: const TextStyle(fontSize: 16,fontWeight: FontWeight.bold,),
-          unselectedLabelStyle: const TextStyle(fontSize: 14),
-          selectedItemColor: Colors.blue,
-          unselectedItemColor: Colors.grey,
-          backgroundColor: Colors.transparent,
-          currentIndex: _selectedIndex,
-          onTap: _onItemTapped,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home,
-                size: 25,
-              ),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.mic,
-                size: 25,
-              ),
-              label: 'Voice Controlled',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.person,
-                size: 25,
-              ),
-              label: 'Profile',
-            ),
-          ],
         ),
       ),
     );
