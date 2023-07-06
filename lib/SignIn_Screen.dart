@@ -10,7 +10,15 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
+  final _formKey = GlobalKey<FormState>();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
   @override
+  void dispose(){
+    super.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+  }
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
@@ -36,37 +44,52 @@ class _SignInScreenState extends State<SignInScreen> {
                     left: 35),
                 child: Column(
                   children: [
-                    TextField(
-                      style: const TextStyle(
-                        fontSize: 18,
-                        color: Colors.white,
-                      ),
-                      decoration: InputDecoration(
-                          focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: const BorderSide(
-                                color: Colors.white,
-                                width: 2.0,
-                              )),
-                          enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: const BorderSide(
-                                color: Colors.blueAccent,
-                                width: 2.0,
-                              )),
-                          hintText: 'Enter Your Email Address',
-                          hintStyle: const TextStyle(
-                            color: Colors.black87,
+                    Form(
+                    key:_formKey,
+                    child:Column(
+                      children: [
+                        TextFormField(
+                          keyboardType: TextInputType.emailAddress,
+                          controller: emailController,
+                          style: const TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
                           ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          )),
-                    ),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    TextField(
-                      style: const TextStyle(
+                          decoration: InputDecoration(
+                              focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                    color: Colors.white,
+                                    width: 2.0,
+                                  )),
+                              enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                    color: Colors.blueAccent,
+                                    width: 2.0,
+                                  )),
+                              hintText: 'Enter Your Email Address',
+                              prefixIcon: const Icon(Icons.email),
+                              hintStyle: const TextStyle(
+                                color: Colors.black87,
+                              ),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              )),
+                          validator: (value){
+                            if(value!.isEmpty){
+                              return "Enter Email";
+                            }
+                            return null;
+                          },
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                      TextFormField(
+                        keyboardType: TextInputType.emailAddress,
+                        controller: passwordController,
+                        style: const TextStyle(
                         fontSize: 18,
                         color: Colors.white,
                       ),
@@ -90,11 +113,16 @@ class _SignInScreenState extends State<SignInScreen> {
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           )),
+                        validator: (value){
+                          if(value!.isEmpty){
+                            return "Enter Password";
+                          }
+                          return null;
+                        },
                     ),
                     const SizedBox(
                       height: 40,
-                    ),
-                    Row(
+                    ),Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const Text(
@@ -129,11 +157,15 @@ class _SignInScreenState extends State<SignInScreen> {
                               style: TextStyle(
                                 decoration: TextDecoration.underline,
                                 fontSize: 20,
-                                  color: Colors.blue,
+                                color: Colors.blue,
                               ),
                             )),
                         TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              if(_formKey.currentState!.validate()){
+
+                              }
+                            },
                             child: const Text(
                               'Forget Password',
                               style: TextStyle(
@@ -143,6 +175,9 @@ class _SignInScreenState extends State<SignInScreen> {
                               ),
                             ))
                       ],
+                    )
+                      ],
+                    )
                     )
                   ],
                 ),
