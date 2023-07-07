@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:home_automation_using_voice_commands/background_image.dart';
 import 'package:torch_controller/torch_controller.dart';
 
 class TorchLight extends StatefulWidget {

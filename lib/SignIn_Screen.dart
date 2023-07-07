@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:home_automation_using_voice_commands/HomeScreen.dart';
 import 'package:home_automation_using_voice_commands/SignUp_Screen.dart';
-import 'package:home_automation_using_voice_commands/background_image.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
