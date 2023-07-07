@@ -315,8 +315,87 @@ class _HomeState extends State<Home> {
                       )
                     ],
                   )),
+              Container(
+                  width: MediaQuery.of(context).size.width*0.40,
+                  height: MediaQuery.of(context).size.height * 0.32,
+                  decoration: const BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Text("65 %",
+                                style: TextStyle(
+                                    fontSize: 30, color: Colors.white)),
+                            Icon(
+                              Icons.ac_unit_rounded,
+                              color: Colors.cyanAccent,
+                              size: 35,
+                            ),
+                          ],
+                        ),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.all(12),
+                        child: Text("Water Level",
+                            style:
+                            TextStyle(fontSize: 20, color: Colors.white)),
+                      ),
+                      const Divider(
+                        height: 20,
+                        color: Colors.white60,
+                        thickness: 4,
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Column(
+                        children: [
+                          const Center(
+                              child: Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: Text("Water Pump Control",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                        color: Colors.white)),
+                              )),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              const Text("ON / OFF",
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold)),
+                              Switch(
+                                  activeColor: Colors.red,
+                                  value: Pump,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      onUpdate_3();
+                                      onWrite_3();
+                                    });
+                                  })
+                            ],
+                          ),
+                        ],
+                      )
+                    ],
+                  )),
+
             ],
           ),
+
     ]
     )
     );
