@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:home_automation_using_voice_commands/HomeScreen.dart';
 import 'package:home_automation_using_voice_commands/SignUp_Screen.dart';
+import 'package:home_automation_using_voice_commands/background_image.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -19,6 +20,7 @@ class _SignInScreenState extends State<SignInScreen> {
     emailController.dispose();
     passwordController.dispose();
   }
+  @override
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
@@ -70,6 +72,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                   )),
                               hintText: 'Enter Your Email Address',
                               prefixIcon: const Icon(Icons.email),
+                              prefixIconColor: Colors.blueAccent,
                               hintStyle: const TextStyle(
                                 color: Colors.black87,
                               ),
@@ -87,6 +90,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           height: 30,
                         ),
                       TextFormField(
+                        obscureText: true,
                         keyboardType: TextInputType.emailAddress,
                         controller: passwordController,
                         style: const TextStyle(
@@ -107,6 +111,8 @@ class _SignInScreenState extends State<SignInScreen> {
                                 width: 2.0,
                               )),
                           hintText: 'Enter Your Password',
+                          prefixIcon: const Icon(Icons.password),
+                          prefixIconColor: Colors.blueAccent,
                           hintStyle: const TextStyle(
                             color: Colors.black87,
                           ),
@@ -122,7 +128,11 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
                     const SizedBox(
                       height: 40,
-                    ),Row(
+                    ),
+                      ],
+                    )
+                    ),
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const Text(
@@ -135,7 +145,9 @@ class _SignInScreenState extends State<SignInScreen> {
                           backgroundColor: Colors.blue,
                           child: IconButton(
                             onPressed: () {
-                              _navigateToHomeScreen(context);
+                              if(_formKey.currentState!.validate()){
+                                _navigateToHomeScreen(context);
+                              }
                             },
                             icon: const Icon(Icons.arrow_forward,size: 42,color: Colors.white,),
                           ),
@@ -162,9 +174,6 @@ class _SignInScreenState extends State<SignInScreen> {
                             )),
                         TextButton(
                             onPressed: () {
-                              if(_formKey.currentState!.validate()){
-
-                              }
                             },
                             child: const Text(
                               'Forget Password',
@@ -175,9 +184,6 @@ class _SignInScreenState extends State<SignInScreen> {
                               ),
                             ))
                       ],
-                    )
-                      ],
-                    )
                     )
                   ],
                 ),

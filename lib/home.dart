@@ -9,10 +9,10 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  bool Fan = false;
-  bool  Light= false;
-  bool Pump = false;
-  bool Motion_Sensor = false;
+  bool Fan = true;
+  bool  Light= true;
+  bool Pump = true;
+  bool Motion_Sensor = true;
 
   final dbRef = FirebaseDatabase.instance.ref();
 

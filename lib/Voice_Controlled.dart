@@ -80,7 +80,6 @@ class _VoiceControlState extends State<VoiceControl> {
                             onUpdate_1();
                             onWrite_1();
                           }
-                          isListening = false;
                         }
                         if (text == 'turn off fan') {
                           if (kDebugMode) {
@@ -96,7 +95,6 @@ class _VoiceControlState extends State<VoiceControl> {
                             onUpdate_2();
                             onWrite_2();
                           }
-                          isListening = false;
                         }
                         if (text == 'turn off light') {
                           if (kDebugMode) {
@@ -104,7 +102,6 @@ class _VoiceControlState extends State<VoiceControl> {
                             onUpdate_2();
                             onWrite_2();
                           }
-                          isListening = false;
                         }
                         if (text == 'turn on pump') {
                           if (kDebugMode) {
@@ -112,7 +109,6 @@ class _VoiceControlState extends State<VoiceControl> {
                             onUpdate_3();
                             onWrite_3();
                           }
-                          isListening = false;
                         }
                         if (text == 'turn off pump') {
                           if (kDebugMode) {
@@ -120,7 +116,6 @@ class _VoiceControlState extends State<VoiceControl> {
                             onUpdate_3();
                             onWrite_3();
                           }
-                          isListening = false;
                         }
                       });
                     });
