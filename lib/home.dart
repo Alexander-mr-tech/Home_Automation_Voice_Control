@@ -35,11 +35,11 @@ class _HomeState extends State<Home> {
     });
   }
 
-  // Future onUpdate_4() async{
-  //   setState(() {
-  //     Motion_Sensor = !Motion_Sensor;
-  //   });
-  // }
+  Future onUpdate_4() async{
+    setState(() {
+      Motion_Sensor = !Motion_Sensor;
+    });
+  }
 
   Future<void> onWrite_1() async {
     dbRef.child("Appliances").set({"Fan": !Fan});
@@ -52,9 +52,9 @@ class _HomeState extends State<Home> {
   Future<void> onWrite_3() async {
     dbRef.child("Appliances").set({"Pump": !Pump});
   }
-  // Future<void> onWrite_4() async {
-  //   dbRef.child("Appliances").set({"Motion_Sensor": !Motion_Sensor});
-  // }
+  Future<void> onWrite_4() async {
+    dbRef.child("Appliances").set({"Motion_Sensor": !Motion_Sensor});
+  }
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -253,11 +253,8 @@ class _HomeState extends State<Home> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            Text("65 %",
-                                style: TextStyle(
-                                    fontSize: 30, color: Colors.white)),
                             Icon(
-                              Icons.ac_unit_rounded,
+                              Icons.account_tree_rounded,
                               color: Colors.cyanAccent,
                               size: 35,
                             ),
@@ -330,11 +327,8 @@ class _HomeState extends State<Home> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            Text("65 %",
-                                style: TextStyle(
-                                    fontSize: 30, color: Colors.white)),
                             Icon(
-                              Icons.ac_unit_rounded,
+                              Icons.security,
                               color: Colors.cyanAccent,
                               size: 35,
                             ),
@@ -343,9 +337,11 @@ class _HomeState extends State<Home> {
                       ),
                       const Padding(
                         padding: EdgeInsets.all(12),
-                        child: Text("Water Level",
-                            style:
-                            TextStyle(fontSize: 20, color: Colors.white)),
+                        child: Center(
+                          child: Text("Security",
+                              style:
+                              TextStyle(fontSize: 20, color: Colors.white)),
+                        ),
                       ),
                       const Divider(
                         height: 20,
@@ -360,7 +356,7 @@ class _HomeState extends State<Home> {
                           const Center(
                               child: Padding(
                                 padding: EdgeInsets.all(8.0),
-                                child: Text("Water Pump Control",
+                                child: Text("Motion\nSensor",
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 18,
@@ -379,11 +375,11 @@ class _HomeState extends State<Home> {
                                       fontWeight: FontWeight.bold)),
                               Switch(
                                   activeColor: Colors.red,
-                                  value: Pump,
+                                  value: Motion_Sensor,
                                   onChanged: (value) {
                                     setState(() {
-                                      onUpdate_3();
-                                      onWrite_3();
+                                      onUpdate_4();
+                                      onWrite_4();
                                     });
                                   })
                             ],
