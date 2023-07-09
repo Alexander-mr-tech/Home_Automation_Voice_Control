@@ -99,7 +99,6 @@ class _VoiceControlState extends State<VoiceControl> {
                           onUpdate_1();
                           onWrite_1();
                         }
-                        isListening = false;
                       }
                       if (text == 'turn on light') {
                         if (kDebugMode) {
@@ -132,8 +131,8 @@ class _VoiceControlState extends State<VoiceControl> {
                       if (text == 'turn on security') {
                         if (kDebugMode) {
                           print(text);
-                          onUpdate_3();
-                          onWrite_3();
+                          onUpdate_4();
+                          onWrite_4();
                         }
                       }
                       if (text == 'turn off security') {

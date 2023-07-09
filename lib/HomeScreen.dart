@@ -4,6 +4,8 @@ import 'package:home_automation_using_voice_commands/background_image.dart';
 import 'package:home_automation_using_voice_commands/home.dart';
 import 'package:home_automation_using_voice_commands/torch_light.dart';
 
+import 'SignIn_Screen.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -26,6 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
         extendBodyBehindAppBar: true,
         backgroundColor: Colors.transparent,
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: const Text(
             "Home Automation Using Voice Command",
             style: TextStyle(
@@ -34,6 +37,15 @@ class _HomeScreenState extends State<HomeScreen> {
           centerTitle: true,
           backgroundColor: Colors.transparent,
           elevation: 0,
+          actions: [
+            IconButton(
+              icon: Icon(Icons.logout),
+              onPressed: () {
+                // Perform action when the icon is pressed
+                _navigateToLogin(context);
+              },
+            ),
+          ],
         ),
         body: tabs[_currentIndex],
         bottomNavigationBar: BottomNavigationBar(
@@ -71,4 +83,8 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+}
+void _navigateToLogin(BuildContext context) {
+  Navigator.of(context)
+      .push(MaterialPageRoute(builder: (context) => const SignInScreen()));
 }
