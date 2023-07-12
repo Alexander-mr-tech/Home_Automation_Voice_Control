@@ -59,20 +59,20 @@ class _SignInScreenState extends State<SignInScreen> {
               fit: BoxFit.cover)),
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        body: Stack(
-          children: [
-            Container(
-              padding: const EdgeInsets.only(left: 35, top: 130),
-              child: const Text(
-                "Welcome\nBack",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold),
+        body: SingleChildScrollView(
+          child: Stack(
+            children: [
+              Container(
+                padding: const EdgeInsets.only(left: 35, top: 130),
+                child: const Text(
+                  "Welcome\nBack",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold),
+                ),
               ),
-            ),
-            SingleChildScrollView(
-              child: Container(
+              Container(
                 padding: EdgeInsets.only(
                     top: MediaQuery.of(context).size.height * 0.35,
                     right: 35,
@@ -94,20 +94,20 @@ class _SignInScreenState extends State<SignInScreen> {
                                   focusedBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10),
                                       borderSide: const BorderSide(
-                                        color: Colors.white,
+                                        color: Colors.blue,
                                         width: 2.0,
                                       )),
                                   enabledBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10),
                                       borderSide: const BorderSide(
-                                        color: Colors.blueAccent,
+                                        color: Colors.white,
                                         width: 2.0,
                                       )),
                                   hintText: 'Enter Your Email Address',
                                   prefixIcon: const Icon(Icons.email),
-                                  prefixIconColor: Colors.blueAccent,
+                                  prefixIconColor: Colors.white,
                                   hintStyle: const TextStyle(
-                                    color: Colors.black87,
+                                    color: Colors.white,
                                   ),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10),
@@ -146,18 +146,18 @@ class _SignInScreenState extends State<SignInScreen> {
                                   focusedBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10),
                                       borderSide: const BorderSide(
-                                        color: Colors.white,
+                                        color: Colors.blue,
                                         width: 2.0,
                                       )),
                                   enabledBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10),
                                       borderSide: const BorderSide(
-                                        color: Colors.blueAccent,
+                                        color: Colors.white,
                                         width: 2.0,
                                       )),
                                   hintText: 'Enter Your Password',
                                   prefixIcon: const Icon(Icons.password),
-                                  prefixIconColor: Colors.blueAccent,
+                                  prefixIconColor: Colors.white,
                                   hintStyle: const TextStyle(
                                     color: Colors.black87,
                                   ),
@@ -222,9 +222,9 @@ class _SignInScreenState extends State<SignInScreen> {
                     )
                   ],
                 ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );

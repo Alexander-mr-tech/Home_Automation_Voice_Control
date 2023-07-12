@@ -3,7 +3,6 @@ import 'package:home_automation_using_voice_commands/Voice_Controlled.dart';
 import 'package:home_automation_using_voice_commands/background_image.dart';
 import 'package:home_automation_using_voice_commands/home.dart';
 import 'package:home_automation_using_voice_commands/torch_light.dart';
-
 import 'SignIn_Screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -39,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
           elevation: 0,
           actions: [
             IconButton(
-              icon: Icon(Icons.logout),
+              icon: const Icon(Icons.logout),
               onPressed: () {
                 // Perform action when the icon is pressed
                 _navigateToLogin(context);

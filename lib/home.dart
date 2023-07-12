@@ -9,8 +9,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  bool Fan = false;
-  bool  Light= false;
+  bool Fan = true;
+  bool Light= false;
   bool Pump = false;
   bool Motion_Sensor = false;
 
@@ -136,7 +136,7 @@ class _HomeState extends State<Home> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-                              const Text("ON / OFF",
+                              const Text("OFF / ON",
                                   style: TextStyle(
                                       fontSize: 18,
                                       color: Colors.black,
@@ -210,7 +210,7 @@ class _HomeState extends State<Home> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-                              const Text("ON / OFF",
+                              const Text("OFF / ON",
                                   style: TextStyle(
                                       fontSize: 18,
                                       color: Colors.black,
@@ -263,7 +263,7 @@ class _HomeState extends State<Home> {
                       ),
                       const Padding(
                         padding: EdgeInsets.all(12),
-                        child: Text("Water Level",
+                        child: Text("Water Pump",
                             style:
                             TextStyle(fontSize: 20, color: Colors.white)),
                       ),
@@ -280,7 +280,7 @@ class _HomeState extends State<Home> {
                           const Center(
                               child: Padding(
                                 padding: EdgeInsets.all(8.0),
-                                child: Text("Water Pump Control",
+                                child: Text("Water Pump Control",textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 18,
@@ -292,7 +292,7 @@ class _HomeState extends State<Home> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-                              const Text("ON / OFF",
+                              const Text("OFF / ON",
                                   style: TextStyle(
                                       fontSize: 18,
                                       color: Colors.black,
@@ -368,7 +368,7 @@ class _HomeState extends State<Home> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-                              const Text("ON / OFF",
+                              const Text("OFF / ON",
                                   style: TextStyle(
                                       fontSize: 18,
                                       color: Colors.black,

@@ -15,10 +15,10 @@ class _VoiceControlState extends State<VoiceControl> {
   SpeechToText speechToText = SpeechToText();
   String text = "";
   var isListening = false;
-  bool Fan = false;
-  bool Light = false;
-  bool Pump = false;
-  bool Motion_Sensor = false;
+  bool Fan = true;
+  bool Light = true;
+  bool Pump = true;
+  bool Motion_Sensor = true;
 
   final dbRef = FirebaseDatabase.instance.ref();
 
@@ -29,7 +29,7 @@ class _VoiceControlState extends State<VoiceControl> {
   }
 
   Future onWrite_1() async {
-    dbRef.child("Appliances").set({"Fan": !Fan});
+    dbRef.child("Appliances").set({"Fan": Fan});
   }
 
   Future onUpdate_2() async {
