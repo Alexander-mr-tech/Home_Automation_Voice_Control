@@ -312,86 +312,85 @@ class _HomeState extends State<Home> {
                       )
                     ],
                   )),
-              Container(
-                  width: MediaQuery.of(context).size.width*0.40,
-                  height: MediaQuery.of(context).size.height * 0.32,
-                  decoration: const BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Icon(
-                              Icons.security,
-                              color: Colors.cyanAccent,
-                              size: 35,
-                            ),
-                          ],
-                        ),
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.all(12),
-                        child: Center(
-                          child: Text("Security",
-                              style:
-                              TextStyle(fontSize: 20, color: Colors.white)),
-                        ),
-                      ),
-                      const Divider(
-                        height: 20,
-                        color: Colors.white60,
-                        thickness: 4,
-                      ),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      Column(
-                        children: [
-                          const Center(
-                              child: Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: Text("Motion\nSensor",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 18,
-                                        color: Colors.white)),
-                              )),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              const Text("OFF / ON",
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold)),
-                              Switch(
-                                  activeColor: Colors.red,
-                                  value: Motion_Sensor,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      onUpdate_4();
-                                      onWrite_4();
-                                    });
-                                  })
-                            ],
-                          ),
-                        ],
-                      )
-                    ],
-                  )),
+              // Container(
+              //     width: MediaQuery.of(context).size.width*0.40,
+              //     height: MediaQuery.of(context).size.height * 0.32,
+              //     decoration: const BoxDecoration(
+              //       color: Colors.blue,
+              //       borderRadius: BorderRadius.all(Radius.circular(20)),
+              //     ),
+              //     child: Column(
+              //       crossAxisAlignment: CrossAxisAlignment.start,
+              //       children: [
+              //         const Padding(
+              //           padding: EdgeInsets.all(8.0),
+              //           child: Row(
+              //             mainAxisAlignment: MainAxisAlignment.spaceAround,
+              //             children: [
+              //               Icon(
+              //                 Icons.security,
+              //                 color: Colors.cyanAccent,
+              //                 size: 35,
+              //               ),
+              //             ],
+              //           ),
+              //         ),
+              //         const Padding(
+              //           padding: EdgeInsets.all(12),
+              //           child: Center(
+              //             child: Text("Security",
+              //                 style:
+              //                 TextStyle(fontSize: 20, color: Colors.white)),
+              //           ),
+              //         ),
+              //         const Divider(
+              //           height: 20,
+              //           color: Colors.white60,
+              //           thickness: 4,
+              //         ),
+              //         const SizedBox(
+              //           height: 5,
+              //         ),
+              //         Column(
+              //           children: [
+              //             const Center(
+              //                 child: Padding(
+              //                   padding: EdgeInsets.all(8.0),
+              //                   child: Text("Motion\nSensor",
+              //                       style: TextStyle(
+              //                           fontWeight: FontWeight.bold,
+              //                           fontSize: 18,
+              //                           color: Colors.white)),
+              //                 )),
+              //             const SizedBox(
+              //               height: 5,
+              //             ),
+              //             Row(
+              //               mainAxisAlignment: MainAxisAlignment.spaceAround,
+              //               children: [
+              //                 const Text("OFF / ON",
+              //                     style: TextStyle(
+              //                         fontSize: 18,
+              //                         color: Colors.black,
+              //                         fontWeight: FontWeight.bold)),
+              //                 Switch(
+              //                     activeColor: Colors.red,
+              //                     value: Motion_Sensor,
+              //                     onChanged: (value) {
+              //                       setState(() {
+              //                         onUpdate_4();
+              //                         onWrite_4();
+              //                       });
+              //                     })
+              //               ],
+              //             ),
+              //           ],
+              //         )
+              //       ],
+              //     )),
 
             ],
           ),
-
     ]
     )
     );
