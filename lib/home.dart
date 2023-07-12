@@ -9,7 +9,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  bool Fan = true;
+  bool Fan = false;
   bool Light= false;
   bool Pump = false;
   bool Motion_Sensor = false;

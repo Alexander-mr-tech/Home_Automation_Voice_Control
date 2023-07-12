@@ -15,10 +15,10 @@ class _VoiceControlState extends State<VoiceControl> {
   SpeechToText speechToText = SpeechToText();
   String text = "";
   var isListening = false;
-  bool Fan = true;
-  bool Light = true;
-  bool Pump = true;
-  bool Motion_Sensor = true;
+  bool Fan = false;
+  bool Light = false;
+  bool Pump = false;
+  bool Motion_Sensor = false;
 
   final dbRef = FirebaseDatabase.instance.ref();
 
@@ -29,7 +29,7 @@ class _VoiceControlState extends State<VoiceControl> {
   }
 
   Future onWrite_1() async {
-    dbRef.child("Appliances").set({"Fan": Fan});
+    dbRef.child("Appliances").set({"Fan": !Fan});
   }
 
   Future onUpdate_2() async {
@@ -128,14 +128,14 @@ class _VoiceControlState extends State<VoiceControl> {
                           onWrite_3();
                         }
                       }
-                      if (text == 'turn on security') {
+                      if (text == 'turn off security') {
                         if (kDebugMode) {
                           print(text);
                           onUpdate_4();
                           onWrite_4();
                         }
                       }
-                      if (text == 'turn off security') {
+                      if (text == 'turn on security') {
                         if (kDebugMode) {
                           print(text);
                           onUpdate_4();
