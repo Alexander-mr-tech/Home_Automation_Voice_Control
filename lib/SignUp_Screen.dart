@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:home_automation_using_voice_commands/HomeScreen.dart';
 import 'package:home_automation_using_voice_commands/SignIn_Screen.dart';
 import 'package:home_automation_using_voice_commands/Utils/utils.dart';
 
@@ -18,8 +17,6 @@ class _SignUpState extends State<SignUp> {
   bool loading = false;
   bool _obscureText = true;
   final _formKey = GlobalKey<FormState>();
-  var email = "";
-  var password = "";
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
@@ -133,6 +130,7 @@ class _SignUpState extends State<SignUp> {
                           ),
                           TextFormField(
                             keyboardType: TextInputType.emailAddress,
+                            controller: emailController,
                             style: const TextStyle(
                               color: Colors.white,
                                 fontSize: 18
@@ -169,6 +167,7 @@ class _SignUpState extends State<SignUp> {
                           ),
                           TextFormField(
                             keyboardType: TextInputType.text,
+                            controller: passwordController,
                             obscureText: _obscureText,
                             style: const TextStyle(
                               color: Colors.white,
@@ -264,8 +263,4 @@ class _SignUpState extends State<SignUp> {
 void _navigateToSignIn(BuildContext context) {
   Navigator.of(context)
       .push(MaterialPageRoute(builder: (context) => const SignInScreen()));
-}
-void _navigateToHomeScreen(BuildContext context) {
-  Navigator.of(context)
-      .push(MaterialPageRoute(builder: (context) => const HomeScreen()));
 }

@@ -24,42 +24,58 @@ class _VoiceControlState extends State<VoiceControl> {
 
   Future onUpdate_1() async {
     setState(() {
-      Fan = !Fan;
+      if(Fan) {
+        Fan = false;
+      } else {
+        Fan = true;
+      }
     });
   }
 
   Future onWrite_1() async {
-    dbRef.child("Appliances").set({"Fan": !Fan});
+    dbRef.child("Appliances").set({"Fan": Fan});
   }
 
   Future onUpdate_2() async {
     setState(() {
-      Light = !Light;
+      if(Light) {
+        Light = false;
+      } else {
+        Light = true;
+      }
     });
   }
 
   Future<void> onWrite_2() async {
-    dbRef.child("Appliances").set({"Light": !Light});
+    dbRef.child("Appliances").set({"Light": Light});
   }
 
   Future onUpdate_3() async {
     setState(() {
-      Pump = !Pump;
+      if(Pump) {
+        Pump = false;
+      } else {
+        Pump = true;
+      }
     });
   }
 
   Future<void> onWrite_3() async {
-    dbRef.child("Appliances").set({"Pump": !Pump});
+    dbRef.child("Appliances").set({"Pump": Pump});
   }
 
-  Future onUpdate_4() async{
-    setState(() {
-      Motion_Sensor = !Motion_Sensor;
-    });
-  }
-  Future<void> onWrite_4() async {
-    dbRef.child("Appliances").set({"Motion_Sensor": !Motion_Sensor});
-  }
+  // Future onUpdate_4() async{
+  //   setState(() {
+  //     if(Motion_Sensor) {
+  //       Motion_Sensor = false;
+  //     } else {
+  //       Motion_Sensor = true;
+  //     };
+  //   });
+  // }
+  // Future<void> onWrite_4() async {
+  //   dbRef.child("Appliances").set({"Motion_Sensor": Motion_Sensor});
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -126,20 +142,6 @@ class _VoiceControlState extends State<VoiceControl> {
                           print(text);
                           onUpdate_3();
                           onWrite_3();
-                        }
-                      }
-                      if (text == 'turn off security') {
-                        if (kDebugMode) {
-                          print(text);
-                          onUpdate_4();
-                          onWrite_4();
-                        }
-                      }
-                      if (text == 'turn on security') {
-                        if (kDebugMode) {
-                          print(text);
-                          onUpdate_4();
-                          onWrite_4();
                         }
                       }
                     });

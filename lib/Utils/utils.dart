@@ -7,10 +7,10 @@ class Utils {
       msg: message,
       toastLength: Toast.LENGTH_SHORT,
       gravity: ToastGravity.BOTTOM,
-      timeInSecForIosWeb: 2,
+      timeInSecForIosWeb: 5,
       backgroundColor: Colors.indigo,
       textColor: Colors.white,
-      fontSize: 16,
+      fontSize: 24,
     );
   }
 }
